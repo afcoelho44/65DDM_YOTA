@@ -17,7 +17,6 @@ import udesc.br.yota.ui.player.PlayerActivity
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var destroyButton : Button
     private lateinit var openPlayerButton : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,10 +38,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        destroyButton = findViewById(R.id.btDestroy)
         openPlayerButton = findViewById(R.id.btOpenPlayer)
-
-        destroyButton.setOnClickListener   { _-> finish() }
         openPlayerButton.setOnClickListener{ _-> openPlayerActivity()}
     }
 
