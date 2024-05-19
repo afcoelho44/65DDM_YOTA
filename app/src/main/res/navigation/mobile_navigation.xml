@@ -8,18 +8,15 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="udesc.br.yota.ui.home.HomeFragment"
-        android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="udesc.br.yota.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:name="udesc.br.yota.ui.musicSearch.SearchFragment"
+        tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="udesc.br.yota.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:name="udesc.br.yota.ui.musicLibrary.LibraryFragment"
+        tools:layout="@layout/fragment_library" />
 </navigation>

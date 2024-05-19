@@ -1,4 +1,4 @@
-package udesc.br.yota.ui.player.ui.player
+package udesc.br.yota.ui.player
 
 import android.app.Application
 import android.media.MediaPlayer

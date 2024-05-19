@@ -1,13 +1,13 @@
-package udesc.br.yota.ui.notifications
+package udesc.br.yota.ui.musicSearch
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NotificationsViewModel : ViewModel() {
+class SearchViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+        value = "Pesquise sua música!"
     }
     val text: LiveData<String> = _text
 }

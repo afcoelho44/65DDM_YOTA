@@ -5,42 +5,74 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlayerActivity" >
+    android:background="@color/Background"
+    android:orientation="vertical"
+    tools:context="udesc.br.yota.ui.player.PlayerActivity">
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="412dp"
+        android:layout_height="279dp"
+        android:background="@drawable/player_form"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+    </FrameLayout>
 
     <Button
         android:id="@+id/btPlay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="play"
+        style="@style/Theme.Yota"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/play_and_pause_button"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/play"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textAppearance="@style/Theme.Yota"
+        android:textColor="@color/black"
+        android:textColorLink="@android:color/widget_edittext_dark"
+        android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.796" />
+        app:layout_constraintEnd_toStartOf="@+id/btNext"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toEndOf="@+id/btRewind"
+        tools:text="@string/play" />
 
     <Button
         android:id="@+id/btNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="136dp"
-        android:text="next"
+        style="@style/CustomButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="120dp"
+        android:background="@drawable/play_and_pause_button"
+        android:backgroundTintMode="src_atop"
+        android:text="@string/next"
+        android:textColor="#000000"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btPlay" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="136dp"
-        android:text="rewind"
+        android:id="@+id/btRewind"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="120dp"
+        android:background="@drawable/play_and_pause_button"
+        android:backgroundTintMode="src_atop"
+        android:text="@string/previous"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btPlay"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

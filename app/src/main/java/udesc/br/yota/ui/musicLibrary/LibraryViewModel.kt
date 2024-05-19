@@ -1,13 +1,13 @@
-package udesc.br.yota.ui.dashboard
+package udesc.br.yota.ui.musicLibrary
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class LibraryViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+        value = "Suas musicas"
     }
     val text: LiveData<String> = _text
 }

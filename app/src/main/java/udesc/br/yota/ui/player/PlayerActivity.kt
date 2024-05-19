@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.viewModels
 import com.example.yota.R
-import udesc.br.yota.ui.player.ui.player.PlayerFragment
-import udesc.br.yota.ui.player.ui.player.PlayerViewModel
 
 class PlayerActivity : AppCompatActivity() {
 
@@ -19,7 +17,6 @@ class PlayerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_player)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, PlayerFragment.newInstance())
                 .commitNow()
         }
         initButtons();
@@ -32,7 +29,12 @@ class PlayerActivity : AppCompatActivity() {
 
     private fun playAndPause(){
             val player : MediaPlayer = playerViewModel.mediaPlayer
-            if (player.isPlaying) player.pause()
-            else player.start()
+            if (player.isPlaying){
+                player.pause()
+                playerButton.text = getString(R.string.play)
+            } else {
+                playerButton.text = getString(R.string.pause)
+                player.start()
+            }
     }
 }
