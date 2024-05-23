@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
-    android:background="@color/Background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Background"
     android:paddingTop="?attr/actionBarSize">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -31,14 +32,27 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
 
-    <Button
-        android:id="@+id/btOpenPlayer"
-        android:layout_width="368dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="20dp"
+    <FrameLayout
+        android:id="@+id/mini_player"
+        android:layout_width="413dp"
+        android:layout_height="111dp"
+        android:background="@drawable/mini_player_form"
         app:layout_constraintBottom_toTopOf="@+id/nav_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.986">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/button"
+            android:layout_width="132dp"
+            android:layout_height="76dp"
+            android:layout_gravity="center|end"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_play_arrow_24"
+            app:backgroundTintMode="add"
+            app:useCompatPadding="true" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

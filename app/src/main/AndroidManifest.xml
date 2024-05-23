@@ -13,15 +13,18 @@
         android:theme="@style/Theme.Yota"
         tools:targetApi="29">
         <activity
+            android:name="udesc.br.yota.MainActivity"
+            android:exported="false"
+            android:label="" />
+        <activity
             android:name="udesc.br.yota.ui.player.PlayerActivity"
             android:exported="false" />
         <activity
-            android:name="udesc.br.yota.MainActivity"
+            android:name="udesc.br.yota.ui.ui.login.LoginActivity"
             android:exported="true"
-            android:label="@string/app_name">
+            android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

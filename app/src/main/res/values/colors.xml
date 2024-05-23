@@ -4,9 +4,10 @@
     <color name="Background">#072535</color>
     <color name="purple_500">@color/player_color</color>
     <color name="purple_700">@color/Background</color>
-    <color name="teal_200">#8BC34A</color>
+    <color name="teal_200">#2378A9</color>
     <color name="teal_700">#CDDC39</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="player_color">#F3F3F3</color>
+    <color name="mini_player_color">#296D94</color>
 </resources>

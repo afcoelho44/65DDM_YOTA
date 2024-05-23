@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.FrameLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -17,7 +18,9 @@ import udesc.br.yota.ui.player.PlayerActivity
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var openPlayerButton : Button
+    private lateinit var planAndPauseOnMiniPlayerButton : Button
+    private lateinit var miniPlayer : FrameLayout
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,38 +41,13 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        openPlayerButton = findViewById(R.id.btOpenPlayer)
-        openPlayerButton.setOnClickListener{ _-> openPlayerActivity()}
+        miniPlayer = findViewById(R.id.mini_player)
+        miniPlayer.setOnClickListener{ _-> openPlayerActivity()}
+        //planAndPauseOnMiniPlayerButton.setOnClickListener{ _-> playAndPause()}
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.i("visualização do lifecycle", "on start")
-    }
+    private fun playAndPause(){
 
-    override fun onResume() {
-        super.onResume()
-        Log.i("visualização do lifecycle", "on resume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.i("visualização do lifecycle", "on pause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.i("visualização do lifecycle", "on stop")
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Log.i("visualização do lifecycle", "on restart")
-    }
-
-    override fun onDestroy() {
-        Log.i("visualização do lifecycle", "on destroy")
-        super.onDestroy()
     }
 
     private fun openPlayerActivity(){
