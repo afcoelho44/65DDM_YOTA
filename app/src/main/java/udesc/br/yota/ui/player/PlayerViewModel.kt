@@ -10,7 +10,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
 
     val mediaPlayer: MediaPlayer
         get() {
-            if (_mediaPlayer == null) _mediaPlayer = MediaPlayer.create(getApplication(), R.raw.saudade_bandida)
+            if (_mediaPlayer == null) _mediaPlayer = MediaPlayer.create(getApplication(), R.raw.christmas)
             return _mediaPlayer!!
         }
 
