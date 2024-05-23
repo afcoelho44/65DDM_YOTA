@@ -6,10 +6,13 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.viewModels
 import com.example.yota.R
+import udesc.br.yota.Providers.MusicPlayerProvider
 
 class PlayerActivity : AppCompatActivity() {
 
     private lateinit var playerButton: Button
+    private lateinit var nextMusicButton: Button
+    private lateinit var previousMusicButton: Button
     private val playerViewModel: PlayerViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,17 +27,31 @@ class PlayerActivity : AppCompatActivity() {
 
     private fun initButtons(){
         playerButton = findViewById(R.id.btPlay)
+        nextMusicButton = findViewById(R.id.btNext)
+        previousMusicButton = findViewById(R.id.btRewind)
+
         playerButton.setOnClickListener{ _-> playAndPause() }
+        nextMusicButton.setOnClickListener{_-> nextMusic()}
+        previousMusicButton.setOnClickListener{_-> previousMusic()}
     }
 
     private fun playAndPause(){
-            val player : MediaPlayer = playerViewModel.mediaPlayer
-            if (player.isPlaying){
-                player.pause()
-                playerButton.text = getString(R.string.play)
-            } else {
-                playerButton.text = getString(R.string.pause)
-                player.start()
-            }
+        val player : MusicPlayerProvider = playerViewModel.mediaPlayer
+        if (player.isPlaying()){
+            playerButton.text = getString(R.string.play)
+        } else {
+            playerButton.text = getString(R.string.pause)
+        }
+        player.playAndPause()
+    }
+
+    private fun nextMusic(){
+        val player : MusicPlayerProvider = playerViewModel.mediaPlayer
+        player.nextMusic()
+    }
+
+    private fun previousMusic(){
+        val player : MusicPlayerProvider = playerViewModel.mediaPlayer
+        player.previousMusic()
     }
 }

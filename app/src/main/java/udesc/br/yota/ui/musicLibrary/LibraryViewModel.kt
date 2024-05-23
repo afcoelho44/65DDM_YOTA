@@ -10,4 +10,8 @@ class LibraryViewModel : ViewModel() {
         value = "Suas musicas"
     }
     val text: LiveData<String> = _text
+
+    fun listMusics(){
+
+    }
 }
