@@ -14,8 +14,12 @@ import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.example.yota.R
+import com.google.common.primitives.Bytes
 import udesc.br.yota.ui.repository.MusicDao
 import udesc.br.yota.ui.repository.MusicRepository
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 
 class MusicPlayerProvider: Service() {
 
@@ -146,5 +150,29 @@ class MusicPlayerProvider: Service() {
         mediaPlayer?.release()
         mediaPlayer = null
         super.onDestroy()
+    }
+
+    fun setMusicWithByteArray(bytes: ByteArray){
+        try {
+            val tempFile = File.createTempFile("temp_audio", ".mp3", context.cacheDir)
+            tempFile.deleteOnExit()
+
+            val fos = FileOutputStream(tempFile)
+            fos.write(bytes)
+            fos.close()
+
+            val newMediaPlayer = MediaPlayer()
+            newMediaPlayer.setDataSource(tempFile.absolutePath)
+
+            newMediaPlayer.setOnCompletionListener {
+                newMediaPlayer.release()
+                tempFile.delete()
+            }
+
+            playMediaPlayer(newMediaPlayer)
+
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
     }
 }
