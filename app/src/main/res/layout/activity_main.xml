@@ -46,11 +46,12 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/mini_player_button"
-            android:layout_width="132dp"
+            android:layout_width="76dp"
             android:layout_height="76dp"
             android:layout_gravity="center|end"
             android:layout_margin="10dp"
-            android:src="@color/common_google_signin_btn_text_dark_disabled"
+            android:src="@drawable/ic_play_arrow_24"
+            app:fabCustomSize="76dp"
             app:backgroundTintMode="add"
             app:useCompatPadding="true" />
     </FrameLayout>

@@ -33,7 +33,7 @@
         android:background="@drawable/play_and_pause_button"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/play"
-        android:textAlignment="textEnd"
+        android:textAlignment="center"
         android:textAllCaps="true"
         android:textAppearance="@style/Theme.Yota"
         android:textColor="@color/black"
