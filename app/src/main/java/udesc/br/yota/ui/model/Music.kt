@@ -1,10 +1,10 @@
 package udesc.br.yota.ui.model
 
 import android.media.MediaPlayer
+import com.fasterxml.jackson.annotation.JsonProperty
 
-class Music(val id: Int,
-            val name: String,
-            val image: Int?) {
-
+class Music(@JsonProperty("id") val id: Int,
+            @JsonProperty("name")val name: String,
+            @JsonProperty("image")val image: Int?) {
 
 }

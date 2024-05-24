@@ -39,7 +39,7 @@ class LibraryFragment : Fragment(), AdapterView.OnItemClickListener {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View ?{
+    ): View {
         _binding = FragmentLibraryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 

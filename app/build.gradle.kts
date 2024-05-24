@@ -55,6 +55,8 @@ dependencies {
     implementation(libs.firebase.analytics)
     implementation (libs.firebase.auth.ktx)
     implementation(libs.androidx.activity)
+    implementation(libs.retrofit)
+    implementation(libs.converter.jackson)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
