@@ -1,5 +1,6 @@
 package udesc.br.yota.Providers
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.media.MediaPlayer
 import udesc.br.yota.ui.repository.MusicDao
@@ -13,12 +14,14 @@ class MusicPlayerProvider private constructor() {
     private lateinit var context: Context
 
     companion object {
+
+        @SuppressLint("StaticFieldLeak")
         @Volatile private var instance: MusicPlayerProvider? = null
 
-        fun getInstance(context: Context): MusicPlayerProvider {
+        fun getInstance(context: Context?): MusicPlayerProvider {
             return instance ?: synchronized(this) {
                 instance ?: MusicPlayerProvider().apply {
-                    initMediaPlayer(context)
+                    initMediaPlayer(context!!)
                     instance = this
                 }
             }
@@ -47,11 +50,7 @@ class MusicPlayerProvider private constructor() {
         else repository!!.getMusic(currentMusic++).id
 
         val newMediaPlayer : MediaPlayer = MediaPlayer.create(context, nextMusic)
-        mediaPlayer!!.stop()
-        mediaPlayer!!.release()
-        mediaPlayer = null
-        mediaPlayer = newMediaPlayer
-        mediaPlayer!!.start()
+        playMediaPlayer(newMediaPlayer)
     }
 
     fun previousMusic(){
@@ -60,17 +59,26 @@ class MusicPlayerProvider private constructor() {
         else repository!!.getMusic(--currentMusic).id
 
         val newMediaPlayer : MediaPlayer = MediaPlayer.create(context, previousMusic)
-        mediaPlayer!!.stop()
-        mediaPlayer!!.release()
-        mediaPlayer = null
-        mediaPlayer = newMediaPlayer
-        mediaPlayer!!.start()
+        playMediaPlayer(newMediaPlayer)
     }
 
     fun activeLoop(){
     }
     fun setMusicRepository(repository: MusicRepository){
         this.repository = repository
+    }
+
+    fun setMusic(musicId: Int){
+        val newMediaPlayer : MediaPlayer = MediaPlayer.create(context, musicId)
+        playMediaPlayer(newMediaPlayer)
+    }
+
+    private fun playMediaPlayer(newPlayer: MediaPlayer){
+        mediaPlayer!!.stop()
+        mediaPlayer!!.release()
+        mediaPlayer = null
+        mediaPlayer = newPlayer
+        mediaPlayer!!.start()
     }
 
 }
