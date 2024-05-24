@@ -28,6 +28,7 @@ class MusicPlayerProvider: Service() {
     private var repository: MusicRepository? = null
     private var currentMusic: Int = 0
     private var isForeground: Boolean = false
+    private var intent:Intent? =null
     private lateinit var context: Context
 
     companion object {
@@ -80,8 +81,8 @@ class MusicPlayerProvider: Service() {
             isForeground = false
         } else {
             mediaPlayer?.start()
-            val intent = Intent(context, MusicPlayerProvider::class.java)
-            ContextCompat.startForegroundService(context, intent)
+            intent = Intent(context, MusicPlayerProvider::class.java)
+            ContextCompat.startForegroundService(context, intent!!)
         }
     }
 
@@ -142,7 +143,7 @@ class MusicPlayerProvider: Service() {
         return NotificationCompat.Builder(this, channelId)
             .setContentTitle("Music Player")
             .setContentText("Playing music...")
-            .setSmallIcon(R.drawable.ic_play_arrow_24)
+            .setSmallIcon(R.drawable.logoyota_1)
             .build()
     }
 
