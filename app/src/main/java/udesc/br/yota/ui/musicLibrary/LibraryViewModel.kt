@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class LibraryViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "Suas musicas"
+        value = "Não existem músicas aqui"
     }
     val text: LiveData<String> = _text
 

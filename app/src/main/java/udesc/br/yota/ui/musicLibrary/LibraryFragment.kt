@@ -12,9 +12,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.R
 import com.example.yota.databinding.FragmentLibraryBinding
+import com.example.yota.databinding.FragmentSearchBinding
 import udesc.br.yota.MainActivity
 import udesc.br.yota.ui.model.Music
 import udesc.br.yota.ui.musicLibrary.adapter.MusicsAdapter
+import udesc.br.yota.ui.musicSearch.SearchViewModel
 import udesc.br.yota.ui.repository.MusicDao
 import udesc.br.yota.ui.repository.MusicRepository
 
@@ -24,7 +26,7 @@ class LibraryFragment : Fragment() {
     lateinit var musics: List<Music>
     lateinit var repository: MusicRepository
     lateinit var adapter: MusicsAdapter
-    lateinit var context: Context
+
     private var _binding: FragmentLibraryBinding? = null
 
     // This property is only valid between onCreateView and
@@ -36,15 +38,24 @@ class LibraryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View ?{
-        context = context as MainActivity
-        repository= MusicDao()
-        musics= repository.getAllMusics()
-        adapter = MusicsAdapter(musics, context)
-        listMusic= binding.listMusics
+        _binding = FragmentLibraryBinding.inflate(inflater, container, false)
+        val root: View = binding.root
 
-        listMusic.adapter= adapter
+        val listMusicViewModel =
+            ViewModelProvider(this).get(LibraryViewModel::class.java)
 
-        return LayoutInflater.from(container?.context).inflate(com.example.yota.R.layout.fragment_library, container, false)
+
+        val listMusic: ListView = binding.listMusics
+        listMusicViewModel.text.observe(viewLifecycleOwner) {
+            val context = context as MainActivity
+            repository= MusicDao()
+            musics= repository.getAllMusics()
+            adapter = MusicsAdapter(musics, context)
+
+
+            listMusic.adapter= adapter
+        }
+        return root
     }
 
 
