@@ -45,6 +45,9 @@ class MainActivity : AppCompatActivity() {
         miniPlayer.setOnClickListener{ _-> openPlayerActivity()}
         playAndPauseOnMiniPlayerButton = findViewById(R.id.mini_player_button)
         playAndPauseOnMiniPlayerButton.setOnClickListener{ _-> playAndPause()}
+        playAndPauseOnMiniPlayerButton.setImageIcon(Icon.createWithResource(this, R.drawable.ic_play_arrow_24))
+
+        initMusicPlayerContext()
     }
 
     private fun playAndPause(){
@@ -58,6 +61,10 @@ class MainActivity : AppCompatActivity() {
             playAndPauseOnMiniPlayerButton.setImageIcon(icon)
         }
         player.playAndPause()
+    }
+
+    private fun initMusicPlayerContext(){
+        MusicPlayerProvider.getInstance(this)
     }
 
     private fun openPlayerActivity(){

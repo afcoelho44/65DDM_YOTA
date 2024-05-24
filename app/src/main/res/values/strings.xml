@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">Yota</string>
     <string name="title_home">Início</string>
     <string name="title_dashboard">Pesquisar</string>
     <string name="title_notifications">Biblioteca</string>
