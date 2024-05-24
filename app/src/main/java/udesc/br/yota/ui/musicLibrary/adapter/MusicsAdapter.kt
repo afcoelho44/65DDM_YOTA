@@ -5,8 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.TextView
+import com.example.yota.R
+import udesc.br.yota.ui.model.Music
 
-class MusicsAdapter (val listMusics: MutableList<Int>, val context: Context): BaseAdapter() {
+class MusicsAdapter (private val listMusics: List<Music>, val context: Context): BaseAdapter() {
     override fun getCount(): Int {
        return listMusics.size
     }
@@ -20,7 +23,12 @@ class MusicsAdapter (val listMusics: MutableList<Int>, val context: Context): Ba
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-       val l = LayoutInflater.from(context)
-        return convertView!!
+        val l = LayoutInflater.from(context)
+        val item= l.inflate(R.layout.layout_musics_adapter, parent, false)
+        val txtName= item.findViewById<TextView>(R.id.nameMusic)
+
+        txtName.setText(listMusics[position].name)
+
+        return item
     }
 }
