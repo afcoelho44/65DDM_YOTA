@@ -19,10 +19,10 @@ import udesc.br.yota.Providers.MusicPlayerProvider
 import udesc.br.yota.ui.player.PlayerActivity
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
     private lateinit var playAndPauseOnMiniPlayerButton : FloatingActionButton
     private lateinit var miniPlayer : FrameLayout
+    private lateinit var musicPlayerProvider: MusicPlayerProvider
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,24 +47,20 @@ class MainActivity : AppCompatActivity() {
         playAndPauseOnMiniPlayerButton.setOnClickListener{ _-> playAndPause()}
         playAndPauseOnMiniPlayerButton.setImageIcon(Icon.createWithResource(this, R.drawable.ic_play_arrow_24))
 
-        initMusicPlayerContext()
+        // Inicializar o MusicPlayerProvider com o contexto correto
+        musicPlayerProvider = MusicPlayerProvider.getInstance(this)
     }
 
     private fun playAndPause(){
-       val player = MusicPlayerProvider.getInstance(null)
         val icon: Icon
-        if (player.isPlaying()){
+        if (musicPlayerProvider.isPlaying()){
             icon = Icon.createWithResource(this, R.drawable.ic_play_arrow_24)
             playAndPauseOnMiniPlayerButton.setImageIcon(icon)
         } else {
             icon = Icon.createWithResource(this, R.drawable.ic_pause_24)
             playAndPauseOnMiniPlayerButton.setImageIcon(icon)
         }
-        player.playAndPause()
-    }
-
-    private fun initMusicPlayerContext(){
-        MusicPlayerProvider.getInstance(this)
+        musicPlayerProvider.playAndPause()
     }
 
     private fun openPlayerActivity(){

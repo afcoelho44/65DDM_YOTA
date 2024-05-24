@@ -1,5 +1,6 @@
 package udesc.br.yota.ui.player
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.media.MediaPlayer
 import androidx.lifecycle.AndroidViewModel
@@ -8,11 +9,12 @@ import udesc.br.yota.Providers.MusicPlayerProvider
 import udesc.br.yota.ui.repository.MusicDao
 
 class PlayerViewModel(application: Application) : AndroidViewModel(application) {
-    private var _mediaPlayer: MusicPlayerProvider = MusicPlayerProvider.getInstance(getApplication())
+    @SuppressLint("StaticFieldLeak")
+    private var _musicPlayerProvider: MusicPlayerProvider = MusicPlayerProvider.getInstance(getApplication())
 
-    val mediaPlayer: MusicPlayerProvider
+    val musicPlayerProvider: MusicPlayerProvider
         get() {
-            return _mediaPlayer
+            return _musicPlayerProvider
         }
 
     override fun onCleared() {

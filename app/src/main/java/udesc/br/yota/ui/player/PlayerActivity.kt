@@ -18,26 +18,27 @@ class PlayerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player)
+
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .commitNow()
         }
-        initButtons();
+        initButtons()
     }
 
-    private fun initButtons(){
+    private fun initButtons() {
         playerButton = findViewById(R.id.btPlay)
         nextMusicButton = findViewById(R.id.btNext)
         previousMusicButton = findViewById(R.id.btRewind)
 
-        playerButton.setOnClickListener{ _-> playAndPause() }
-        nextMusicButton.setOnClickListener{_-> nextMusic()}
-        previousMusicButton.setOnClickListener{_-> previousMusic()}
+        playerButton.setOnClickListener { playAndPause() }
+        nextMusicButton.setOnClickListener { nextMusic() }
+        previousMusicButton.setOnClickListener { previousMusic() }
     }
 
-    private fun playAndPause(){
-        val player : MusicPlayerProvider = playerViewModel.mediaPlayer
-        if (player.isPlaying()){
+    private fun playAndPause() {
+        val player: MusicPlayerProvider = playerViewModel.musicPlayerProvider
+        if (player.isPlaying()) {
             playerButton.text = getString(R.string.play)
         } else {
             playerButton.text = getString(R.string.pause)
@@ -45,13 +46,13 @@ class PlayerActivity : AppCompatActivity() {
         player.playAndPause()
     }
 
-    private fun nextMusic(){
-        val player : MusicPlayerProvider = playerViewModel.mediaPlayer
+    private fun nextMusic() {
+        val player: MusicPlayerProvider = playerViewModel.musicPlayerProvider
         player.nextMusic()
     }
 
-    private fun previousMusic(){
-        val player : MusicPlayerProvider = playerViewModel.mediaPlayer
+    private fun previousMusic() {
+        val player: MusicPlayerProvider = playerViewModel.musicPlayerProvider
         player.previousMusic()
     }
 }
